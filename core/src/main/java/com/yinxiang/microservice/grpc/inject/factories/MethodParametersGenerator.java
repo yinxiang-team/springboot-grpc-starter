@@ -4,7 +4,7 @@ import com.google.common.base.Strings;
 import com.yinxiang.microservice.grpc.inject.StubInterceptor;
 import com.yinxiang.microservice.grpc.inject.header.StubHeadersProcessor;
 import com.yinxiang.microservice.grpc.inject.annotations.GrpcHeader;
-import com.yinxiang.spring.inject.utils.StringUtils;
+import com.yinxiang.microservice.grpc.util.StringUtils;
 import io.grpc.stub.AbstractStub;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

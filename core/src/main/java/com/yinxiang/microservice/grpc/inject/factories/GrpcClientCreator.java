@@ -6,7 +6,6 @@ import com.google.common.collect.Maps;
 import com.yinxiang.microservice.grpc.autoconfigure.GrpcServerProperties;
 import com.yinxiang.microservice.grpc.inject.channels.ReusableChannel;
 import com.yinxiang.microservice.grpc.inject.config.GrpcServiceConfig;
-import com.yinxiang.spring.inject.InjectBeanException;
 import io.grpc.Channel;
 import io.grpc.ClientInterceptor;
 import io.grpc.ManagedChannel;
@@ -189,7 +188,7 @@ public abstract class GrpcClientCreator<T> {
       // create Stub
       return newStub(tClass, name);
     } catch (Exception e) {
-      throw new InjectBeanException(e.getMessage(), e);
+      throw new InjectGrpcException(e.getMessage(), e);
     }
   }
 
