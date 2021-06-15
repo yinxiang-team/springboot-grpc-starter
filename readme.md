@@ -5,7 +5,6 @@ springboot-grpc
 1. gRPC client inject.
 2. HTTP to gRPC server interceptor adapt.
 3. New gRPC headers process standard.
-4. gRPC HTTP APIs generator(club).
 
 ## gRPC client inject
 
@@ -51,15 +50,15 @@ grpc:
 * Extends `BaseGrpcController`.
 * Please call one of 
 ```
-void _process(MultiValueMap<String, String> headers, Consumer<Headers> consumer, MethodDescriptor method)
-void _process(Map<String, String> headers, Consumer<Headers> consumer, MethodDescriptor method)
-void _process(MultiValueMap<String, String> headers, Consumer<Headers> consumer)
-void _process(Map<String, String> headers, Consumer<Headers> consumer)
-void _process(MultiValueMap<String, String> headers, Function<Headers, T> supplier)
-void _process(MultiValueMap<String, String> headers, Consumer<Headers> consumer)
-void _process(Map<String, String> headers, Consumer<Headers> consumer)
-T _process(MultiValueMap<String, String> headers, Function<Headers, T> supplier)
-T _process(Map<String, String> headers, Function<Headers, T> supplier)
+void _processHeadersAndDo(MultiValueMap<String, String> headers, Consumer<Headers> consumer, MethodDescriptor method)
+void _processHeadersAndDo(Map<String, String> headers, Consumer<Headers> consumer, MethodDescriptor method)
+void _processHeadersAndDo(MultiValueMap<String, String> headers, Consumer<Headers> consumer)
+void _processHeadersAndDo(Map<String, String> headers, Consumer<Headers> consumer)
+void _processHeadersAndDo(MultiValueMap<String, String> headers, Function<Headers, T> supplier)
+void _processHeadersAndDo(MultiValueMap<String, String> headers, Consumer<Headers> consumer)
+void _processHeadersAndDo(Map<String, String> headers, Consumer<Headers> consumer)
+T _processHeadersAndDo(MultiValueMap<String, String> headers, Function<Headers, T> supplier)
+T _processHeadersAndDo(Map<String, String> headers, Function<Headers, T> supplier)
 ```
 * In the `BaseGrpcController` headers will transform to a `Metadata`.
 * `BaseGrpcController` call all interceptors and process the headers in method(`_process(Metadata metadata, Consumer<T> consumer, MethodDescriptor method)`).
@@ -78,18 +77,6 @@ _process(
           BiConsumer<B, StreamObserver<T>> consumer,
           MethodDescriptor method
   ) throws JsonFormat.ParseException
-```
-* The maven pom:
-```
-groupId: org.codehaus.mojo
-artifactId: exec-maven-plugin
-version: 3.0.0
-executions.execution.phase: compile
-executions.execution.goals.goal: java
-executions.execution.configuration.mainClass: com.yinxiang.microservice.grpc.controller.ControllerGenerator
-executions.execution.configuration.arguments.argument: ${basedir}/../test-stub/target/classes
-executions.execution.configuration.arguments.argument: ${basedir}/src/test/java/com/yinxiang/microservice/grpc/test/controllers
-executions.execution.configuration.arguments.argument: com.yinxiang.microservice.grpc.test.controllers
 ```
 
 ## New gRPC headers process standard

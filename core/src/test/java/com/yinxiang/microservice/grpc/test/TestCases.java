@@ -5,8 +5,6 @@ import com.google.common.collect.Lists;
 import com.googlecode.protobuf.format.JsonFormat;
 import com.yinxiang.microservice.grpc.controller.ClassPathLoader;
 import com.yinxiang.microservice.grpc.inject.channels.ReusableChannel;
-import com.yinxiang.microservice.grpc.inject.spring.ClassPathGrpcClientScanner;
-import com.yinxiang.microservice.grpc.inject.spring.MetricGrpcClientFactoryBean;
 import com.yinxiang.microservice.grpc.test.controllers.TestRestfulController;
 import com.yinxiang.microservice.grpc.test.controllers.TestServiceController;
 import io.grpc.Status;
@@ -45,10 +43,6 @@ public class TestCases {
   private TestServiceController testServiceController;
   @Autowired
   private TestRestfulController testRestfulController;
-
-  static {
-    ClassPathGrpcClientScanner.setGrpcClientCreatorClass(MetricGrpcClientFactoryBean.class);
-  }
 
   private void testNoHeader(Runnable runnable) {
     try {

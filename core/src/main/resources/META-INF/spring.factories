@@ -1,7 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.yinxiang.microservice.grpc.autoconfigure.GrpcAutoConfiguration,\
-com.yinxiang.microservice.grpc.inject.config.GrpcInjectAutoConfiguration,\
-com.yinxiang.microservice.grpc.autoconfigure.GrpcClientMetricAutoConfiguration,\
-com.yinxiang.microservice.grpc.autoconfigure.GrpcServerMetricAutoConfiguration
+com.yinxiang.microservice.grpc.inject.config.GrpcInjectAutoConfiguration
 org.springframework.boot.env.EnvironmentPostProcessor=\
 com.yinxiang.microservice.grpc.context.GrpcServerEnvironment

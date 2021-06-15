@@ -6,7 +6,7 @@
 
   <groupId>com.yinxiang.microservice</groupId>
   <artifactId>grpc-starter</artifactId>
-  <version>0.4.2-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <packaging>pom</packaging>
 

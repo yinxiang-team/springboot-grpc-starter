@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * This is a generate file.
- * 2021年6月10日 星期四
+ * 2021年6月15日 星期二
  * A rest http local proxy for TestService.
  * Powered by com.yinxiang.microservice.grpc.controller.
  */

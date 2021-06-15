@@ -6,7 +6,7 @@
 
   <groupId>com.yinxiang.microservice</groupId>
   <artifactId>grpc-starter-core</artifactId>
-  <version>0.4.2-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <packaging>jar</packaging>
 
@@ -77,15 +77,7 @@
     <dependency>
       <groupId>com.yinxiang.microservice</groupId>
       <artifactId>grpc-starter-test-stubs</artifactId>
-      <version>0.4.2-SNAPSHOT</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.sun</groupId>
-      <artifactId>tools</artifactId>
-      <version>1.8</version>
-      <scope>system</scope>
-      <systemPath>${java.home}/../lib/tools.jar</systemPath>
+      <version>1.0.0</version>
     </dependency>
 
     <dependency>
@@ -119,59 +111,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <mainClass>com.yinxiang.microservice.grpc.controller.ControllerGenerator</mainClass>
-              <arguments>
-                <argument>${basedir}/../test-stubs/target/classes</argument>
-                <argument>${basedir}/src/test/java/com/yinxiang/microservice/grpc/test/controllers</argument>
-                <argument>com.yinxiang.microservice.grpc.test.controllers</argument>
-              </arguments>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <!--<plugin>-->
-        <!--<groupId>org.codehaus.mojo</groupId>-->
-        <!--<artifactId>exec-maven-plugin</artifactId>-->
-        <!--<version>3.0.0</version>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<phase>test</phase>-->
-            <!--<goals>-->
-              <!--<goal>java</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<includePluginDependencies>true</includePluginDependencies>-->
-              <!--<mainClass>com.yinxiang.microservice.grpc.doc.ServiceReactApiGenerator</mainClass>-->
-              <!--<arguments>-->
-                <!--<argument>${basedir}/../test-stubs/target/generated-sources/protobuf/</argument>-->
-                <!--<argument>${basedir}/../test-stubs/target/classes</argument>-->
-                <!--<argument>${basedir}/_service-api</argument>-->
-                <!--<argument>ssh://git@source.test1.bj.yxops.net:7999/web/service-api.git</argument>-->
-              <!--</arguments>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-        <!--</executions>-->
-        <!--<dependencies>-->
-          <!--<dependency>-->
-            <!--<groupId>com.sun</groupId>-->
-            <!--<artifactId>tools</artifactId>-->
-            <!--<version>1.8</version>-->
-            <!--<scope>system</scope>-->
-            <!--<systemPath>${java.home}/../lib/tools.jar</systemPath>-->
-          <!--</dependency>-->
-        <!--</dependencies>-->
-      <!--</plugin>-->
     </plugins>
   </build>
 
