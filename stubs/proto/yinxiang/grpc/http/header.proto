@@ -1,0 +1,634 @@
+syntax = "proto2";
+
+package yinxiang.grpc.http;
+
+import "yinxiang/grpc/http/comment.proto";
+
+option java_multiple_files = true;
+option java_package = "com.yinxiang.grpc.http";
+
+/**
+ * lower case
+ */
+message Headers {
+  // ---------------------------------- COMMON ----------------------------------
+
+  /**
+	 * The HTTP {@code Accept} header field name.
+	 * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.3.2">Section 5.3.2 of RFC 7231</a>
+	 */
+  optional string ACCEPT = 1 [default="Accept"];
+  /**
+   * The HTTP {@code Accept-Charset} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.3.3">Section 5.3.3 of RFC 7231</a>
+   */
+  optional string ACCEPT_CHARSET = 2 [default="Accept-Charset"];
+  /**
+   * The HTTP {@code Accept-Encoding} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.3.4">Section 5.3.4 of RFC 7231</a>
+   */
+  optional string ACCEPT_ENCODING = 3 [default="Accept-Encoding"];
+  /**
+   * The HTTP {@code Accept-Language} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.3.5">Section 5.3.5 of RFC 7231</a>
+   */
+  optional string ACCEPT_LANGUAGE = 4 [default="Accept-Language"];
+  /**
+   * The HTTP {@code Accept-Ranges} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7233#section-2.3">Section 5.3.5 of RFC 7233</a>
+   */
+  optional string ACCEPT_RANGES = 5 [default="Accept-Ranges"];
+  /**
+   * The CORS {@code Access-Control-Allow-Credentials} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional string ACCESS_CONTROL_ALLOW_CREDENTIALS = 6 [default="Access-Control-Allow-Credentials"];
+  /**
+   * The CORS {@code Access-Control-Allow-Headers} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional string ACCESS_CONTROL_ALLOW_HEADERS = 7 [default="Access-Control-Allow-Headers"];
+  /**
+   * The CORS {@code Access-Control-Allow-Methods} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional string ACCESS_CONTROL_ALLOW_METHODS = 8 [default="Access-Control-Allow-Methods"];
+  /**
+   * The CORS {@code Access-Control-Allow-Origin} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional string ACCESS_CONTROL_ALLOW_ORIGIN = 9 [default="Access-Control-Allow-Origin"];
+  /**
+   * The CORS {@code Access-Control-Expose-Headers} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional string ACCESS_CONTROL_EXPOSE_HEADERS = 10 [default="Access-Control-Expose-Headers"];
+  /**
+   * The CORS {@code Access-Control-Max-Age} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional string ACCESS_CONTROL_MAX_AGE = 11 [default="Access-Control-Max-Age"];
+  /**
+   * The CORS {@code Access-Control-Request-Headers} request header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional string ACCESS_CONTROL_REQUEST_HEADERS = 12 [default="Access-Control-Request-Headers"];
+  /**
+   * The CORS {@code Access-Control-Request-Method} request header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional string ACCESS_CONTROL_REQUEST_METHOD = 13 [default="Access-Control-Request-Method"];
+  /**
+   * The HTTP {@code Age} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.1">Section 5.1 of RFC 7234</a>
+   */
+  optional string AGE = 14 [default="Age"];
+  /**
+   * The HTTP {@code Allow} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.4.1">Section 7.4.1 of RFC 7231</a>
+   */
+  optional string ALLOW = 15 [default="Allow"];
+  /**
+   * The HTTP {@code Authorization} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7235#section-4.2">Section 4.2 of RFC 7235</a>
+   */
+  optional string AUTHORIZATION = 16 [default="Authorization"];
+  /**
+   * The HTTP {@code Cache-Control} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.2">Section 5.2 of RFC 7234</a>
+   */
+  optional string CACHE_CONTROL = 17 [default="Cache-Control"];
+  /**
+   * The HTTP {@code Connection} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-6.1">Section 6.1 of RFC 7230</a>
+   */
+  optional string CONNECTION = 18 [default="Connection"];
+  /**
+   * The HTTP {@code Content-Encoding} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-3.1.2.2">Section 3.1.2.2 of RFC 7231</a>
+   */
+  optional string CONTENT_ENCODING = 19 [default="Content-Encoding"];
+  /**
+   * The HTTP {@code Content-Disposition} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc6266">RFC 6266</a>
+   */
+  optional string CONTENT_DISPOSITION = 20 [default="Content-Disposition"];
+  /**
+   * The HTTP {@code Content-Language} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-3.1.3.2">Section 3.1.3.2 of RFC 7231</a>
+   */
+  optional string CONTENT_LANGUAGE = 21 [default="Content-Language"];
+  /**
+   * The HTTP {@code Content-Length} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-3.3.2">Section 3.3.2 of RFC 7230</a>
+   */
+  optional string CONTENT_LENGTH = 22 [default="Content-Length"];
+  /**
+   * The HTTP {@code Content-Location} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-3.1.4.2">Section 3.1.4.2 of RFC 7231</a>
+   */
+  optional string CONTENT_LOCATION = 23 [default="Content-Location"];
+  /**
+   * The HTTP {@code Content-Range} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7233#section-4.2">Section 4.2 of RFC 7233</a>
+   */
+  optional string CONTENT_RANGE = 24 [default="Content-Range"];
+  /**
+   * The HTTP {@code Content-Type} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-3.1.1.5">Section 3.1.1.5 of RFC 7231</a>
+   */
+  optional string CONTENT_TYPE = 25 [default="Content-Type"];
+  /**
+   * The HTTP {@code Cookie} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc2109#section-4.3.4">Section 4.3.4 of RFC 2109</a>
+   */
+  optional string COOKIE = 26 [default="Cookie"];
+  /**
+   * The HTTP {@code Date} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.1.1.2">Section 7.1.1.2 of RFC 7231</a>
+   */
+  optional string DATE = 27 [default="Date"];
+  /**
+   * The HTTP {@code ETag} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-2.3">Section 2.3 of RFC 7232</a>
+   */
+  optional string ETAG = 28 [default="ETag"];
+  /**
+   * The HTTP {@code Expect} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.1.1">Section 5.1.1 of RFC 7231</a>
+   */
+  optional string EXPECT = 29 [default="Expect"];
+  /**
+   * The HTTP {@code Expires} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.3">Section 5.3 of RFC 7234</a>
+   */
+  optional string EXPIRES = 30 [default="Expires"];
+  /**
+   * The HTTP {@code From} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.5.1">Section 5.5.1 of RFC 7231</a>
+   */
+  optional string FROM = 31 [default="From"];
+  /**
+   * The HTTP {@code Host} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-5.4">Section 5.4 of RFC 7230</a>
+   */
+  optional string HOST = 32 [default="Host"];
+  /**
+   * The HTTP {@code If-Match} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-3.1">Section 3.1 of RFC 7232</a>
+   */
+  optional string IF_MATCH = 33 [default="If-Match"];
+  /**
+   * The HTTP {@code If-Modified-Since} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-3.3">Section 3.3 of RFC 7232</a>
+   */
+  optional string IF_MODIFIED_SINCE = 34 [default="If-Modified-Since"];
+  /**
+   * The HTTP {@code If-None-Match} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-3.2">Section 3.2 of RFC 7232</a>
+   */
+  optional string IF_NONE_MATCH = 35 [default="If-None-Match"];
+  /**
+   * The HTTP {@code If-Range} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7233#section-3.2">Section 3.2 of RFC 7233</a>
+   */
+  optional string IF_RANGE = 36 [default="If-Range"];
+  /**
+   * The HTTP {@code If-Unmodified-Since} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-3.4">Section 3.4 of RFC 7232</a>
+   */
+  optional string IF_UNMODIFIED_SINCE = 37 [default="If-Unmodified-Since"];
+  /**
+   * The HTTP {@code Last-Modified} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-2.2">Section 2.2 of RFC 7232</a>
+   */
+  optional string LAST_MODIFIED = 38 [default="Last-Modified"];
+  /**
+   * The HTTP {@code Link} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc5988">RFC 5988</a>
+   */
+  optional string LINK = 39 [default="Link"];
+  /**
+   * The HTTP {@code Location} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.1.2">Section 7.1.2 of RFC 7231</a>
+   */
+  optional string LOCATION = 40 [default="Location"];
+  /**
+   * The HTTP {@code Max-Forwards} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.1.2">Section 5.1.2 of RFC 7231</a>
+   */
+  optional string MAX_FORWARDS = 41 [default="Max-Forwards"];
+  /**
+   * The HTTP {@code Origin} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc6454">RFC 6454</a>
+   */
+  optional string ORIGIN = 42 [default="Origin"];
+  /**
+   * The HTTP {@code Pragma} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.4">Section 5.4 of RFC 7234</a>
+   */
+  optional string PRAGMA = 43 [default="Pragma"];
+  /**
+   * The HTTP {@code Proxy-Authenticate} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7235#section-4.3">Section 4.3 of RFC 7235</a>
+   */
+  optional string PROXY_AUTHENTICATE = 44 [default="Proxy-Authenticate"];
+  /**
+   * The HTTP {@code Proxy-Authorization} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7235#section-4.4">Section 4.4 of RFC 7235</a>
+   */
+  optional string PROXY_AUTHORIZATION = 45 [default="Proxy-Authorization"];
+  /**
+   * The HTTP {@code Range} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7233#section-3.1">Section 3.1 of RFC 7233</a>
+   */
+  optional string RANGE = 46 [default="Range"];
+  /**
+   * The HTTP {@code Referer} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.5.2">Section 5.5.2 of RFC 7231</a>
+   */
+  optional string REFERER = 47 [default="Referer"];
+  /**
+   * The HTTP {@code Retry-After} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.1.3">Section 7.1.3 of RFC 7231</a>
+   */
+  optional string RETRY_AFTER = 48 [default="Retry-After"];
+  /**
+   * The HTTP {@code Server} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.4.2">Section 7.4.2 of RFC 7231</a>
+   */
+  optional string SERVER = 49 [default="Server"];
+  /**
+   * The HTTP {@code Set-Cookie} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc2109#section-4.2.2">Section 4.2.2 of RFC 2109</a>
+   */
+  optional string SET_COOKIE = 50 [default="Set-Cookie"];
+  /**
+   * The HTTP {@code Set-Cookie2} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc2965">RFC 2965</a>
+   */
+  optional string SET_COOKIE2 = 51 [default="Set-Cookie2"];
+  /**
+   * The HTTP {@code TE} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-4.3">Section 4.3 of RFC 7230</a>
+   */
+  optional string TE = 52 [default="TE"];
+  /**
+   * The HTTP {@code Trailer} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-4.4">Section 4.4 of RFC 7230</a>
+   */
+  optional string TRAILER = 53 [default="Trailer"];
+  /**
+   * The HTTP {@code Transfer-Encoding} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-3.3.1">Section 3.3.1 of RFC 7230</a>
+   */
+  optional string TRANSFER_ENCODING = 54 [default="Transfer-Encoding"];
+  /**
+   * The HTTP {@code Upgrade} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-6.7">Section 6.7 of RFC 7230</a>
+   */
+  optional string UPGRADE = 55 [default="Upgrade"];
+  /**
+   * The HTTP {@code User-Agent} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.5.3">Section 5.5.3 of RFC 7231</a>
+   */
+  optional string USER_AGENT = 56 [default="User-Agent"];
+  /**
+   * The HTTP {@code Vary} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.1.4">Section 7.1.4 of RFC 7231</a>
+   */
+  optional string VARY = 57 [default="Vary"];
+  /**
+   * The HTTP {@code Via} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-5.7.1">Section 5.7.1 of RFC 7230</a>
+   */
+  optional string VIA = 58 [default="Via"];
+  /**
+   * The HTTP {@code Warning} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.5">Section 5.5 of RFC 7234</a>
+   */
+  optional string WARNING = 59 [default="Warning"];
+  /**
+   * The HTTP {@code WWW-Authenticate} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7235#section-4.1">Section 4.1 of RFC 7235</a>
+   */
+  optional string WWW_AUTHENTICATE = 60 [default="WWW-Authenticate"];
+
+  // ---------------------------------- EXTEND ----------------------------------
+
+  optional string FORWARDED = 70 [default="Forwarded"];
+
+  map<string, string> map = 101;
+  extensions 300 to max;
+}
+
+message HeadersFilter {
+  // ---------------------------------- COMMON ----------------------------------
+
+  /**
+   * The HTTP {@code Accept} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.3.2">Section 5.3.2 of RFC 7231</a>
+   */
+  optional bool ACCEPT = 1 [default=false];
+  /**
+   * The HTTP {@code Accept-Charset} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.3.3">Section 5.3.3 of RFC 7231</a>
+   */
+  optional bool ACCEPT_CHARSET = 2 [default=false];
+  /**
+   * The HTTP {@code Accept-Encoding} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.3.4">Section 5.3.4 of RFC 7231</a>
+   */
+  optional bool ACCEPT_ENCODING = 3 [default=false];
+  /**
+   * The HTTP {@code Accept-Language} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.3.5">Section 5.3.5 of RFC 7231</a>
+   */
+  optional bool ACCEPT_LANGUAGE = 4 [default=false];
+  /**
+   * The HTTP {@code Accept-Ranges} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7233#section-2.3">Section 5.3.5 of RFC 7233</a>
+   */
+  optional bool ACCEPT_RANGES = 5 [default=false];
+  /**
+   * The CORS {@code Access-Control-Allow-Credentials} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional bool ACCESS_CONTROL_ALLOW_CREDENTIALS = 6 [default=false];
+  /**
+   * The CORS {@code Access-Control-Allow-Headers} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional bool ACCESS_CONTROL_ALLOW_HEADERS = 7 [default=false];
+  /**
+   * The CORS {@code Access-Control-Allow-Methods} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional bool ACCESS_CONTROL_ALLOW_METHODS = 8 [default=false];
+  /**
+   * The CORS {@code Access-Control-Allow-Origin} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional bool ACCESS_CONTROL_ALLOW_ORIGIN = 9 [default=false];
+  /**
+   * The CORS {@code Access-Control-Expose-Headers} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional bool ACCESS_CONTROL_EXPOSE_HEADERS = 10 [default=false];
+  /**
+   * The CORS {@code Access-Control-Max-Age} response header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional bool ACCESS_CONTROL_MAX_AGE = 11 [default=false];
+  /**
+   * The CORS {@code Access-Control-Request-Headers} request header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional bool ACCESS_CONTROL_REQUEST_HEADERS = 12 [default=false];
+  /**
+   * The CORS {@code Access-Control-Request-Method} request header field name.
+   * @see <a href="http://www.w3.org/TR/cors/">CORS W3C recommendation</a>
+   */
+  optional bool ACCESS_CONTROL_REQUEST_METHOD = 13 [default=false];
+  /**
+   * The HTTP {@code Age} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.1">Section 5.1 of RFC 7234</a>
+   */
+  optional bool AGE = 14 [default=false];
+  /**
+   * The HTTP {@code Allow} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.4.1">Section 7.4.1 of RFC 7231</a>
+   */
+  optional bool ALLOW = 15 [default=false];
+  /**
+   * The HTTP {@code Authorization} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7235#section-4.2">Section 4.2 of RFC 7235</a>
+   */
+  optional bool AUTHORIZATION = 16 [default=true];
+  /**
+   * The HTTP {@code Cache-Control} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.2">Section 5.2 of RFC 7234</a>
+   */
+  optional bool CACHE_CONTROL = 17 [default=false];
+  /**
+   * The HTTP {@code Connection} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-6.1">Section 6.1 of RFC 7230</a>
+   */
+  optional bool CONNECTION = 18 [default=false];
+  /**
+   * The HTTP {@code Content-Encoding} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-3.1.2.2">Section 3.1.2.2 of RFC 7231</a>
+   */
+  optional bool CONTENT_ENCODING = 19 [default=false];
+  /**
+   * The HTTP {@code Content-Disposition} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc6266">RFC 6266</a>
+   */
+  optional bool CONTENT_DISPOSITION = 20 [default=false];
+  /**
+   * The HTTP {@code Content-Language} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-3.1.3.2">Section 3.1.3.2 of RFC 7231</a>
+   */
+  optional bool CONTENT_LANGUAGE = 21 [default=false];
+  /**
+   * The HTTP {@code Content-Length} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-3.3.2">Section 3.3.2 of RFC 7230</a>
+   */
+  optional bool CONTENT_LENGTH = 22 [default=false];
+  /**
+   * The HTTP {@code Content-Location} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-3.1.4.2">Section 3.1.4.2 of RFC 7231</a>
+   */
+  optional bool CONTENT_LOCATION = 23 [default=false];
+  /**
+   * The HTTP {@code Content-Range} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7233#section-4.2">Section 4.2 of RFC 7233</a>
+   */
+  optional bool CONTENT_RANGE = 24 [default=false];
+  /**
+   * The HTTP {@code Content-Type} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-3.1.1.5">Section 3.1.1.5 of RFC 7231</a>
+   */
+  optional bool CONTENT_TYPE = 25 [default=false];
+  /**
+   * The HTTP {@code Cookie} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc2109#section-4.3.4">Section 4.3.4 of RFC 2109</a>
+   */
+  optional bool COOKIE = 26 [default=true];
+  /**
+   * The HTTP {@code Date} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.1.1.2">Section 7.1.1.2 of RFC 7231</a>
+   */
+  optional bool DATE = 27 [default=false];
+  /**
+   * The HTTP {@code ETag} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-2.3">Section 2.3 of RFC 7232</a>
+   */
+  optional bool ETAG = 28 [default=false];
+  /**
+   * The HTTP {@code Expect} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.1.1">Section 5.1.1 of RFC 7231</a>
+   */
+  optional bool EXPECT = 29 [default=false];
+  /**
+   * The HTTP {@code Expires} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.3">Section 5.3 of RFC 7234</a>
+   */
+  optional bool EXPIRES = 30 [default=false];
+  /**
+   * The HTTP {@code From} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.5.1">Section 5.5.1 of RFC 7231</a>
+   */
+  optional bool FROM = 31 [default=false];
+  /**
+   * The HTTP {@code Host} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-5.4">Section 5.4 of RFC 7230</a>
+   */
+  optional bool HOST = 32 [default=false];
+  /**
+   * The HTTP {@code If-Match} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-3.1">Section 3.1 of RFC 7232</a>
+   */
+  optional bool IF_MATCH = 33 [default=false];
+  /**
+   * The HTTP {@code If-Modified-Since} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-3.3">Section 3.3 of RFC 7232</a>
+   */
+  optional bool IF_MODIFIED_SINCE = 34 [default=false];
+  /**
+   * The HTTP {@code If-None-Match} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-3.2">Section 3.2 of RFC 7232</a>
+   */
+  optional bool IF_NONE_MATCH = 35 [default=false];
+  /**
+   * The HTTP {@code If-Range} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7233#section-3.2">Section 3.2 of RFC 7233</a>
+   */
+  optional bool IF_RANGE = 36 [default=false];
+  /**
+   * The HTTP {@code If-Unmodified-Since} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-3.4">Section 3.4 of RFC 7232</a>
+   */
+  optional bool IF_UNMODIFIED_SINCE = 37 [default=false];
+  /**
+   * The HTTP {@code Last-Modified} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7232#section-2.2">Section 2.2 of RFC 7232</a>
+   */
+  optional bool LAST_MODIFIED = 38 [default=false];
+  /**
+   * The HTTP {@code Link} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc5988">RFC 5988</a>
+   */
+  optional bool LINK = 39 [default=false];
+  /**
+   * The HTTP {@code Location} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.1.2">Section 7.1.2 of RFC 7231</a>
+   */
+  optional bool LOCATION = 40 [default=false];
+  /**
+   * The HTTP {@code Max-Forwards} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.1.2">Section 5.1.2 of RFC 7231</a>
+   */
+  optional bool MAX_FORWARDS = 41 [default=false];
+  /**
+   * The HTTP {@code Origin} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc6454">RFC 6454</a>
+   */
+  optional bool ORIGIN = 42 [default=false];
+  /**
+   * The HTTP {@code Pragma} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.4">Section 5.4 of RFC 7234</a>
+   */
+  optional bool PRAGMA = 43 [default=false];
+  /**
+   * The HTTP {@code Proxy-Authenticate} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7235#section-4.3">Section 4.3 of RFC 7235</a>
+   */
+  optional bool PROXY_AUTHENTICATE = 44 [default=false];
+  /**
+   * The HTTP {@code Proxy-Authorization} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7235#section-4.4">Section 4.4 of RFC 7235</a>
+   */
+  optional bool PROXY_AUTHORIZATION = 45 [default=false];
+  /**
+   * The HTTP {@code Range} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7233#section-3.1">Section 3.1 of RFC 7233</a>
+   */
+  optional bool RANGE = 46 [default=false];
+  /**
+   * The HTTP {@code Referer} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.5.2">Section 5.5.2 of RFC 7231</a>
+   */
+  optional bool REFERER = 47 [default=false];
+  /**
+   * The HTTP {@code Retry-After} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.1.3">Section 7.1.3 of RFC 7231</a>
+   */
+  optional bool RETRY_AFTER = 48 [default=false];
+  /**
+   * The HTTP {@code Server} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.4.2">Section 7.4.2 of RFC 7231</a>
+   */
+  optional bool SERVER = 49 [default=false];
+  /**
+   * The HTTP {@code Set-Cookie} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc2109#section-4.2.2">Section 4.2.2 of RFC 2109</a>
+   */
+  optional bool SET_COOKIE = 50 [default=false];
+  /**
+   * The HTTP {@code Set-Cookie2} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc2965">RFC 2965</a>
+   */
+  optional bool SET_COOKIE2 = 51 [default=false];
+  /**
+   * The HTTP {@code TE} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-4.3">Section 4.3 of RFC 7230</a>
+   */
+  optional bool TE = 52 [default=false];
+  /**
+   * The HTTP {@code Trailer} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-4.4">Section 4.4 of RFC 7230</a>
+   */
+  optional bool TRAILER = 53 [default=false];
+  /**
+   * The HTTP {@code Transfer-Encoding} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-3.3.1">Section 3.3.1 of RFC 7230</a>
+   */
+  optional bool TRANSFER_ENCODING = 54 [default=false];
+  /**
+   * The HTTP {@code Upgrade} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-6.7">Section 6.7 of RFC 7230</a>
+   */
+  optional bool UPGRADE = 55 [default=false];
+  /**
+   * The HTTP {@code User-Agent} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-5.5.3">Section 5.5.3 of RFC 7231</a>
+   */
+  optional bool USER_AGENT = 56 [default=true];
+  /**
+   * The HTTP {@code Vary} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7231#section-7.1.4">Section 7.1.4 of RFC 7231</a>
+   */
+  optional bool VARY = 57 [default=false];
+  /**
+   * The HTTP {@code Via} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7230#section-5.7.1">Section 5.7.1 of RFC 7230</a>
+   */
+  optional bool VIA = 58 [default=false];
+  /**
+   * The HTTP {@code Warning} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7234#section-5.5">Section 5.5 of RFC 7234</a>
+   */
+  optional bool WARNING = 59 [default=false];
+  /**
+   * The HTTP {@code WWW-Authenticate} header field name.
+   * @see <a href="http://tools.ietf.org/html/rfc7235#section-4.1">Section 4.1 of RFC 7235</a>
+   */
+  optional bool WWW_AUTHENTICATE = 60 [default=false];
+
+  // ---------------------------------- EXTEND ----------------------------------
+
+  optional bool FORWARDED = 70 [default=false];
+
+  extensions 300 to max;
+}

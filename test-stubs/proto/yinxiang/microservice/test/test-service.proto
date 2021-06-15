@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import public "yinxiang/grpc/http/http.proto";
+import "yinxiang/grpc/http/comment.proto";
+import "yinxiang/grpc/http/header.proto";
+
+option java_multiple_files = true;
+option java_package = "com.yinxiang.microservice.grpc.test";
+
+package yinxiang.microservice.test;
+
+service TestService {
+  option (yinxiang.grpc.http.url) = "https://{domain}/ms/test";
+
+  // 搜索
+  rpc Search (SearchRequest) returns (SearchReply) {
+    option (google.api.http) = {
+      post: "/search"
+    };
+    option (yinxiang.grpc.http.headers) = {};
+  }
+
+  // 详情
+  rpc Detail (DetailRequest) returns (DetailReply) {
+    option (google.api.http) = {
+      post: "/detail"
+    };
+    option (yinxiang.grpc.http.headers) = {};
+  }
+}
+
+// st
+enum SearchType {
+  // aaaa
+  A = 0;
+  // bbbb
+  B = 1;
+  // cccc
+  C = 2;
+}
+
+message SearchRequest {
+  // 标示
+  int32 id = 1;
+  map<string, string> map = 2;
+  yinxiang.grpc.http.Headers headers = 3 [(yinxiang.grpc.http.referenceHeader) = ""];
+  repeated double exp = 4;
+  repeated SearchType type = 5;
+}
+
+message SearchReply {
+  string result = 1;
+}
+
+message DetailRequest {
+  int32 id = 1;
+  yinxiang.grpc.http.Headers headers = 2 [(yinxiang.grpc.http.referenceHeader) = ""];
+  // 类型
+  int32 type = 3 [(yinxiang.grpc.http.linked) = "yinxiang.microservice.test.SearchType"];
+}
+
+message DetailReply {
+  string result = 1;
+}

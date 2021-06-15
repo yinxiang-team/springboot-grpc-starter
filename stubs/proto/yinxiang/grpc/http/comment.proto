@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package yinxiang.grpc.http;
+
+import "google/protobuf/descriptor.proto";
+
+option java_package = "com.yinxiang.grpc.http";
+
+extend google.protobuf.FieldOptions {
+  optional bool hideFieldComment = 51235 [default=false];
+  optional string linked = 51236;
+  optional string referenceHeader = 51237;
+}
+
+extend google.protobuf.EnumValueOptions {
+  optional bool hideEnumComment = 31235 [default=false];
+}

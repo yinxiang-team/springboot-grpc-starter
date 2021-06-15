@@ -1,0 +1,11 @@
+server:
+  port: 8686
+
+grpc:
+  port: 8006
+  enableReflection: true
+  services:
+    test-service:
+      host: localhost
+      port: 8006
+      name: grpc.test

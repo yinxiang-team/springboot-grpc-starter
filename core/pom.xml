@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.yinxiang.microservice</groupId>
+  <artifactId>grpc-starter-core</artifactId>
+  <version>0.4.2-SNAPSHOT</version>
+
+  <packaging>jar</packaging>
+
+  <name>Spring Boot based microservice root</name>
+  <description>Spring Boot based microservice root project</description>
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <grpc.version>1.29.0</grpc.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <springboot.version>2.1.0.RELEASE</springboot.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <version>${springboot.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+      <version>${springboot.version}</version>
+    </dependency>
+
+    <!--监控相关-开始-->
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>${springboot.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-core</artifactId>
+      <version>1.1.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-registry-prometheus</artifactId>
+      <version>1.1.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <version>${springboot.version}</version>
+    </dependency>
+
+    <!--监控相关-结束-->
+
+    <dependency>
+      <groupId>com.yinxiang</groupId>
+      <artifactId>spring.inject</artifactId>
+      <version>2.1-SNAPSHOT</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.googlecode.protobuf-java-format/protobuf-java-format -->
+    <dependency>
+      <groupId>com.googlecode.protobuf-java-format</groupId>
+      <artifactId>protobuf-java-format</artifactId>
+      <version>1.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.yinxiang.microservice</groupId>
+      <artifactId>grpc-starter-test-stubs</artifactId>
+      <version>0.4.2-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun</groupId>
+      <artifactId>tools</artifactId>
+      <version>1.8</version>
+      <scope>system</scope>
+      <systemPath>${java.home}/../lib/tools.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.13.1</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.yinxiang.microservice.grpc.controller.ControllerGenerator</mainClass>
+              <arguments>
+                <argument>${basedir}/../test-stubs/target/classes</argument>
+                <argument>${basedir}/src/test/java/com/yinxiang/microservice/grpc/test/controllers</argument>
+                <argument>com.yinxiang.microservice.grpc.test.controllers</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.codehaus.mojo</groupId>-->
+        <!--<artifactId>exec-maven-plugin</artifactId>-->
+        <!--<version>3.0.0</version>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<phase>test</phase>-->
+            <!--<goals>-->
+              <!--<goal>java</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<includePluginDependencies>true</includePluginDependencies>-->
+              <!--<mainClass>com.yinxiang.microservice.grpc.doc.ServiceReactApiGenerator</mainClass>-->
+              <!--<arguments>-->
+                <!--<argument>${basedir}/../test-stubs/target/generated-sources/protobuf/</argument>-->
+                <!--<argument>${basedir}/../test-stubs/target/classes</argument>-->
+                <!--<argument>${basedir}/_service-api</argument>-->
+                <!--<argument>ssh://git@source.test1.bj.yxops.net:7999/web/service-api.git</argument>-->
+              <!--</arguments>-->
+            <!--</configuration>-->
+          <!--</execution>-->
+        <!--</executions>-->
+        <!--<dependencies>-->
+          <!--<dependency>-->
+            <!--<groupId>com.sun</groupId>-->
+            <!--<artifactId>tools</artifactId>-->
+            <!--<version>1.8</version>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${java.home}/../lib/tools.jar</systemPath>-->
+          <!--</dependency>-->
+        <!--</dependencies>-->
+      <!--</plugin>-->
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>evernote-maven-repository</id>
+      <url>https://artifacts.test1.bj.yxops.net/repo</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+</project>

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package yinxiang.grpc.http;
+
+import "google/protobuf/descriptor.proto";
+import "yinxiang/grpc/http/header.proto";
+
+option java_package = "com.yinxiang.grpc.http";
+
+extend google.protobuf.MethodOptions {
+  bool hideApiComment = 32770;
+  HeadersFilter headers = 32771;
+}
+
+extend google.protobuf.ServiceOptions {
+  string url = 32768;
+}
