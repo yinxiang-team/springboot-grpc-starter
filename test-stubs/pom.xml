@@ -7,9 +7,7 @@
   <artifactId>grpc-starter-test-stubs</artifactId>
   <packaging>jar</packaging>
   <name>springboot-grpc-starter test-stubs</name>
-
-  <name>Spring Boot based microservice root for gRPC</name>
-  <description>Spring Boot based microservice root for gRPC inject/headers/restful</description>
+  <description>Spring Boot based microservice root for gRPC inject/headers/restful test</description>
 
   <url>https://github.com/yinxiang-team/springboot-grpc-starter</url>
   <issueManagement>
@@ -31,6 +29,12 @@
     <name>yinxiang-team</name>
     <url>https://github.com/yinxiang-team</url>
   </organization>
+  <developers>
+    <developer>
+      <name>Huiyuan Fu</name>
+      <email>firstfhy@qq.com</email>
+    </developer>
+  </developers>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>

@@ -33,6 +33,12 @@
     <name>yinxiang-team</name>
     <url>https://github.com/yinxiang-team</url>
   </organization>
+  <developers>
+    <developer>
+      <name>Huiyuan Fu</name>
+      <email>firstfhy@qq.com</email>
+    </developer>
+  </developers>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
