@@ -10,13 +10,34 @@
 
   <packaging>pom</packaging>
 
-  <name>Spring Boot based microservice root</name>
-  <description>Spring Boot based microservice root project</description>
+  <name>Spring Boot based microservice root for gRPC</name>
+  <description>Spring Boot based microservice root for gRPC inject/headers/restful</description>
   <modules>
     <module>core</module>
     <module>stubs</module>
     <module>test-stubs</module>
   </modules>
+
+  <url>https://github.com/yinxiang-team/springboot-grpc-starter</url>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/yinxiang-team/springboot-grpc-starter/issues</url>
+  </issueManagement>
+  <licenses>
+    <license>
+      <name>The MIT License</name>
+      <url>https://jsoup.org/license</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>https://github.com/yinxiang-team/springboot-grpc-starter</url>
+    <connection>scm:git:https://github.com/yinxiang-team/springboot-grpc-starter.git</connection>
+  </scm>
+  <organization>
+    <name>yinxiang-team</name>
+    <url>https://github.com/yinxiang-team</url>
+  </organization>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -36,6 +57,30 @@
         <executions>
           <execution>
             <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <phase>package</phase>
             <goals>
               <goal>jar</goal>
             </goals>

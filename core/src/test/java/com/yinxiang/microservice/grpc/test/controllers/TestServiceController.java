@@ -5,12 +5,6 @@ import com.yinxiang.microservice.grpc.test.TestServiceGrpc;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * This is a generate file.
- * 2021年6月15日 星期二
- * A rest http local proxy for TestService.
- * Powered by com.yinxiang.microservice.grpc.controller.
- */
 @RestController
 public class TestServiceController extends com.yinxiang.microservice.grpc.controller.BaseGrpcController {
 	private final TestServiceGrpc.TestServiceImplBase grpc;
