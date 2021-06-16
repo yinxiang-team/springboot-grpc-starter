@@ -16,7 +16,6 @@ public interface TestGrpcService extends LogSupplier {
   SearchReply s(@GrpcParam(param = "id") int id);
   SearchReply search(@GrpcParam(param = "id") int id);
   DetailReply detail(@GrpcParam(param = "id") int id);
-  // StubHeadersProcessor.withHeader
   SearchReply search(@GrpcParam(param = "id") int id, @GrpcHeader(name = "auth") String a);
   SearchReply search(@GrpcParam(param = "id") int id, StubInterceptor<TestServiceGrpc.TestServiceBlockingStub> interceptor);
   DetailReply detail(@GrpcParam(param = "id") int a, @GrpcHeader(name = "auth", type = String.class) String auth);
