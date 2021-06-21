@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <version>1.0.0</version>
-  <groupId>com.yinxiang.microservice</groupId>
+  <groupId>com.yinxiang</groupId>
   <artifactId>grpc-starter-test-stubs</artifactId>
   <packaging>jar</packaging>
   <name>springboot-grpc-starter test-stubs</name>
@@ -36,6 +36,13 @@
     </developer>
   </developers>
 
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -63,7 +70,7 @@
       <version>3.8.0</version>
     </dependency>
     <dependency>
-      <groupId>com.yinxiang.microservice</groupId>
+      <groupId>com.yinxiang</groupId>
       <artifactId>grpc-starter-stubs</artifactId>
       <version>1.0.0</version>
     </dependency>
@@ -114,6 +121,32 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <!-- gpg plugin,用于签名认证 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
       </plugin>
     </plugins>
   </build>
