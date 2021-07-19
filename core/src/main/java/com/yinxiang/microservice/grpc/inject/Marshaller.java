@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class Marshaller {
   private static final Logger log = LoggerFactory.getLogger(Marshaller.class);
+  /** The json formatter. */
   private static final JsonFormat JSON_FORMAT = new JsonFormat();
   private static final Gson GSON = new Gson();
 
