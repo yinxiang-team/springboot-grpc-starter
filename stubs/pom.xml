@@ -129,7 +129,7 @@
           </execution>
         </executions>
       </plugin>
-      <!-- gpg plugin,用于签名认证 -->
+      <!-- gpg plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
