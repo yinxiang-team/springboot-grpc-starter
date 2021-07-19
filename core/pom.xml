@@ -136,7 +136,7 @@
           </execution>
         </executions>
       </plugin>
-      <!-- gpg plugin,用于签名认证 -->
+      <!-- gpg plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
@@ -164,14 +164,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <repositories>
-    <repository>
-      <id>evernote-maven-repository</id>
-      <url>https://artifacts.test1.bj.yxops.net/repo</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
 </project>
