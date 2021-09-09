@@ -145,7 +145,7 @@ message Request {
 
 License
 =======
-    Copyright (c) 2007-2015 by Evernote Corporation, All rights reserved.
+    Copyright (c) 2012-2021 by Yinxiangbiji Corporation, All rights reserved.
 
     Use of the source code and binary libraries included in this package
     is permitted under the following terms:
