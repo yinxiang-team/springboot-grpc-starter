@@ -30,26 +30,26 @@ public class HttpHeadersInterceptor extends AbstractHeadersInterceptor<Headers, 
   /** The key of extend_headers */
   private static final Context.Key EXTEND_HEADERS = Context.key("extend_headers");
   /** Cookie's name. */
-  private static final String COOKIE = Headers.getDefaultInstance().getCOOKIE();
+  protected static final String COOKIE = Headers.getDefaultInstance().getCOOKIE();
   /** The default empty string set. */
-  private static final Set<String> NONE = ImmutableSet.of();
+  protected static final Set<String> NONE = ImmutableSet.of();
   /** A always true {@link Predicate}. */
-  private static final Predicate<String> ALWAYS_TRUE = value -> true;
+  protected static final Predicate<String> ALWAYS_TRUE = value -> true;
 
   /** The aliases of headers. */
-  private final Map<String, Set<String>> headerNames;
+  protected final Map<String, Set<String>> headerNames;
   /** The valid filter fields in {@link HeadersFilter} except COOKIE. */
-  private final List<FieldDescriptor> filterFields = HeadersFilter.getDescriptor()
+  protected final List<FieldDescriptor> filterFields = HeadersFilter.getDescriptor()
           .getFields()
           .stream()
           .filter(descriptor -> descriptor.getJavaType() == BOOLEAN && !descriptor.getName().equals("COOKIE"))
           .collect(Collectors.toList());
   /** The valid filter fields in {@link Headers} with {@link #filterFields}. */
-  private final Map<String, FieldDescriptor> headerFields;
+  protected final Map<String, FieldDescriptor> headerFields;
   /** The header filter's checkers. */
-  private final Map<String, Predicate<String>> checkers;
+  protected final Map<String, Predicate<String>> checkers;
   /** The default name of headers. */
-  private final Map<String, String> baseHeaderNames;
+  protected final Map<String, String> baseHeaderNames;
 
   public HttpHeadersInterceptor(GrpcServerProperties properties) throws Exception {
     this.headerNames = properties.getHeaderNames() == null ? ImmutableMap.of() : properties.getHeaderNames();
@@ -88,7 +88,7 @@ public class HttpHeadersInterceptor extends AbstractHeadersInterceptor<Headers, 
    * @param name  name
    * @return  header name
    */
-  private static String toHeaderName(String name) {
+  protected String toHeaderName(String name) {
     return name.toLowerCase().replaceAll("_", "-");
   }
 
@@ -105,7 +105,7 @@ public class HttpHeadersInterceptor extends AbstractHeadersInterceptor<Headers, 
       Object value = filter.getField(descriptor);
       if (value instanceof Boolean && (Boolean) value) {
         String name = descriptor.getName();
-        String headerName = baseHeaderNames.computeIfAbsent(name, HttpHeadersInterceptor::toHeaderName);
+        String headerName = baseHeaderNames.computeIfAbsent(name, this::toHeaderName);
         String header = getHeader(metadata, headerName, cookies, checkers.getOrDefault(name, ALWAYS_TRUE));
         builder.setField(headerFields.get(name), header);
       }
@@ -134,7 +134,7 @@ public class HttpHeadersInterceptor extends AbstractHeadersInterceptor<Headers, 
    * @param checker     a function to check the header
    * @return  value of header
    */
-  private String getHeader(
+  protected String getHeader(
           Metadata headers,
           String headerName,
           ListMultimap<String, String> cookies,
@@ -158,7 +158,7 @@ public class HttpHeadersInterceptor extends AbstractHeadersInterceptor<Headers, 
    * @return  result of parse
    * @see ServerCookieDecoder
    */
-  private ListMultimap<String, String> parseCookie(String cookies) {
+  protected ListMultimap<String, String> parseCookie(String cookies) {
     if (Strings.isNullOrEmpty(cookies)) {
       return ImmutableListMultimap.of();
     }
