@@ -93,7 +93,7 @@ public abstract class AbstractHeadersInterceptor<T extends ExtendableMessage<T>,
         context = pair.getKey();
         header = pair.getRight();
       }
-    } catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException | NullPointerException e) {
       logger.info("process headers IllegalArgumentException: " + e.getMessage(), e);
       throw new StatusRuntimeException(Status.fromCode(INVALID_ARGUMENT).withDescription(e.getMessage()), headers);
     } catch (Exception e) {
