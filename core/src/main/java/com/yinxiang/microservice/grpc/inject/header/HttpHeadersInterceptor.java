@@ -16,7 +16,6 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static com.google.api.client.util.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.protobuf.Descriptors.FieldDescriptor.JavaType.BOOLEAN;
 
@@ -149,9 +148,8 @@ public class HttpHeadersInterceptor extends AbstractHeadersInterceptor<Headers, 
       return header;
     }
     // get header from cookie
-    String errorMessage = "header " + headerName + " is null.";
-    checkArgument(cookies.containsKey(headerName), errorMessage);
-    return checkNotNull(cookies.get(headerName).stream().findFirst().orElse(null), errorMessage);
+    String error = "header " + headerName + " is null.";
+    return checkNotNull(headerNames.stream().filter(cookies::containsKey).findFirst().orElse(null), error);
   }
 
   /**
