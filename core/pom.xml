@@ -4,7 +4,7 @@
 
   <groupId>com.yinxiang.microservice</groupId>
   <artifactId>grpc-starter-core</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3-SNAPSHOT</version>
 
   <packaging>jar</packaging>
 
@@ -76,7 +76,7 @@
     <dependency>
       <groupId>com.yinxiang.microservice</groupId>
       <artifactId>grpc-starter-test-stubs</artifactId>
-      <version>1.0.2</version>
+      <version>1.0.3-SNAPSHOT</version>
     </dependency>
 
     <dependency>
