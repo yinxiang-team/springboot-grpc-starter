@@ -167,10 +167,4 @@
       </plugin>
     </plugins>
   </build>
-  <repositories>
-    <repository>
-      <id>yinxiang-maven-repository</id>
-      <url>https://source.test1.bj.yxops.net/repo</url>
-    </repository>
-  </repositories>
 </project>
