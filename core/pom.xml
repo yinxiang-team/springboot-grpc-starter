@@ -6,11 +6,11 @@
 
   <groupId>com.yinxiang.microservice</groupId>
   <artifactId>grpc-starter-core</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 
   <packaging>jar</packaging>
 
-  <name>Spring Boot based microservice root for gRPC</name>
+  <name>springboot-grpc-starter core</name>
   <description>Spring Boot based microservice root for gRPC inject/headers/restful</description>
 
   <url>https://github.com/yinxiang-team/springboot-grpc-starter</url>
@@ -77,7 +77,7 @@
     <dependency>
       <groupId>com.yinxiang.microservice</groupId>
       <artifactId>grpc-starter-test-stubs</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
     </dependency>
 
     <dependency>
