@@ -4,7 +4,7 @@
 
   <groupId>com.yinxiang.microservice</groupId>
   <artifactId>grpc-starter-core</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
 
   <packaging>jar</packaging>
 
@@ -26,7 +26,7 @@
   <scm>
     <url>https://github.com/yinxiang-team/springboot-grpc-starter</url>
     <connection>scm:git:https://github.com/yinxiang-team/springboot-grpc-starter.git</connection>
-    <tag>1.0.5</tag>
+    <tag>1.0.6</tag>
   </scm>
   <organization>
     <name>yinxiang-team</name>
@@ -76,7 +76,7 @@
     <dependency>
       <groupId>com.yinxiang.microservice</groupId>
       <artifactId>grpc-starter-test-stubs</artifactId>
-      <version>1.0.5</version>
+      <version>1.0.6</version>
     </dependency>
 
     <dependency>

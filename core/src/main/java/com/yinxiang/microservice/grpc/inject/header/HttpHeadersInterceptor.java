@@ -148,8 +148,10 @@ public class HttpHeadersInterceptor extends AbstractHeadersInterceptor<Headers, 
       return header;
     }
     // get header from cookie
-    String error = "header " + headerName + " is null.";
-    return checkNotNull(headerNames.stream().filter(cookies::containsKey).findFirst().orElse(null), error);
+    String name = checkNotNull(headerNames.stream().filter(cookies::containsKey).findFirst().orElse(null),
+            "header name " + headerName + " is null.");
+    return checkNotNull(cookies.get(name).stream().findFirst().orElse(null),
+            "header " + headerName + " is null.");
   }
 
   /**
