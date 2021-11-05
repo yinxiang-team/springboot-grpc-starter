@@ -57,11 +57,10 @@ public class GrpcServerRunner implements CommandLineRunner, DisposableBean {
         .map(name -> applicationContext.getBeanFactory().getBean(name, ServerInterceptor.class))
         .collect(Collectors.toList());
 
-
-
-
     // Adding health service
     serverBuilder.addService(healthStatusManager.getHealthService());
+    // maxInboundMessageSize
+    serverBuilder.maxInboundMessageSize(gRpcServerProperties.getMaxInboundMessageSize());
 
     // find and register all GRpcService-enabled beans
     getBeanNamesByTypeWithAnnotation(GrpcService.class, BindableService.class)

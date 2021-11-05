@@ -9,6 +9,7 @@ import java.util.Set;
 @ConfigurationProperties("grpc")
 public class GrpcServerProperties {
   public static final int DEFAULT_GRPC_PORT = 9090;
+  private static final int DEFAULT_MAX_IN_BOUND_MESSAGE_SIZE = 4 * 1024 * 1024;
 
   /**
    * gRPC server port
@@ -20,6 +21,8 @@ public class GrpcServerProperties {
    * Enables the embedded grpc server.
    */
   private boolean enabled = true;
+
+  private int maxInboundMessageSize = DEFAULT_MAX_IN_BOUND_MESSAGE_SIZE;
 
   /**
    * In process server name.
@@ -83,6 +86,14 @@ public class GrpcServerProperties {
 
   public void setHeaderNames(Map<String, Set<String>> headerNames) {
     this.headerNames = headerNames;
+  }
+
+  public int getMaxInboundMessageSize() {
+    return maxInboundMessageSize;
+  }
+
+  public void setMaxInboundMessageSize(int maxInboundMessageSize) {
+    this.maxInboundMessageSize = maxInboundMessageSize;
   }
 }
 
