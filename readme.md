@@ -6,7 +6,7 @@ springboot-grpc
 <dependency>
   <groupId>com.yinxiang.microservice</groupId>
   <artifactId>grpc-starter-core</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.8</version>
 </dependency>
 ```
 
