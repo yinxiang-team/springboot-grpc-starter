@@ -4,7 +4,7 @@
 
   <groupId>com.yinxiang.microservice</groupId>
   <artifactId>grpc-starter</artifactId>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
 
   <packaging>pom</packaging>
 
@@ -31,7 +31,7 @@
   <scm>
     <url>https://github.com/yinxiang-team/springboot-grpc-starter</url>
     <connection>scm:git:https://github.com/yinxiang-team/springboot-grpc-starter.git</connection>
-    <tag>1.0.7</tag>
+    <tag>1.0.8</tag>
   </scm>
   <organization>
     <name>yinxiang-team</name>

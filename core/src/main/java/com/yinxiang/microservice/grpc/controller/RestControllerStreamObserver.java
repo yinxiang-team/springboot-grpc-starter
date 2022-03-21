@@ -1,6 +1,5 @@
 package com.yinxiang.microservice.grpc.controller;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
@@ -48,10 +47,12 @@ class RestControllerStreamObserver<V extends Message> implements StreamObserver<
    */
   @Override
   public String toString() {
-    // detecting the presence of a message
-    Preconditions.checkArgument(list.size() > 0);
+    // return empty json
+    if (list.size() == 0) {
+      return "{}";
+    }
     // return the json of only one message
-    if (list.size() == 1) {
+    else if (list.size() == 1) {
       return jsonFormat.printToString(list.get(0));
     }
     // return the json array of messages when more then one message
